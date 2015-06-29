@@ -1,6 +1,7 @@
 #!/bin/sh
-# Cribbed from sven, here:
+# Cribbed from sven (http://serverfault.com/users/8897/sven), here:
 # http://serverfault.com/questions/262473/sending-email-after-successful-mysqldump
+
 BACKUP=/data/backup/sql2/new_backup/daily
 cd $BACKUP
 mkdir `date '+%d-%m-%Y'`
@@ -15,7 +16,6 @@ GZIP="$(which gzip)"
 MAIL="youradress@example.com"
 MAILER="$(which mail)"
 STATUSFILE="/tmp/statusfile.$NOW"
-
 
 echo "Backup report from $NOW" > $STATUSFILE
 DBS="$($MYSQL -u $MUSER -h $MHOST -p$MPASS -Bse 'show databases')"
